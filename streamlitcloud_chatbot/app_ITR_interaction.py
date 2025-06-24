@@ -1,29 +1,30 @@
 import streamlit as st
 import difflib
 
-# Menús y precios
+# Menús y precios (Ejemplo de Ecuador)
 platos = {
-    "arroz chaufa": 20,
-    "lomo saltado": 22,
-    "ensalada vegetal": 18,
-    "pollo a la brasa": 25,
-    "sopa criolla": 19
+    "encebollado": 4,
+    "ceviche de camarón": 6,
+    "guatita": 5,
+    "seco de pollo": 4,
+    "hornado": 6
 }
 
 postres = {
-    "mazamorra morada": 8,
-    "arroz con leche": 7
+    "flan de coco": 2,
+    "helado de paila": 2,
+    "queso de hoja": 1.5
 }
 
 bebidas = {
-    "chicha morada": 5,
-    "inca kola": 6,
-    "agua": 4
+    "jugo de naranjilla": 1.5,
+    "colada morada": 2,
+    "agua": 1
 }
 
-pagos = ["yape", "tarjeta", "efectivo"]
+pagos = ["transferencia", "tarjeta", "efectivo"]
 negaciones = ["no", "nada", "ninguno", "ninguna", "no gracias", "no, gracias"]
-
+              
 # Función para similitud
 def buscar_coincidencia(user_input, opciones):
     user_input = user_input.lower()
@@ -41,7 +42,7 @@ st.title("🍽️ Chatbot ITR - Restaurante Virtual")
 if st.session_state.step == 1:
     st.markdown("👋 ¡Bienvenido! Estos son nuestros platos del día:")
     for nombre, precio in platos.items():
-        st.write(f"- **{nombre.title()}** - S/ {precio}")
+        st.write(f"- **{nombre.title()}** - $ {precio}")
     entrada = st.text_input("✍️ Escribe el plato que deseas pedir:", key="plato_input")
     if entrada:
         plato = buscar_coincidencia(entrada, platos.keys())
